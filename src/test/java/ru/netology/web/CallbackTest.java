@@ -38,19 +38,6 @@ class CallbackTest {
         driver = null;
     }
 
-//    @Test
-//    void shouldTestV1old() {
-//        driver.get("http://localhost:9999");
-//        List<WebElement> elements = driver.findElements(By.className("input__top"));
-//        elements.get(0).sendKeys("Иван Иванов");
-//        driver.findElement(By.className("input__inner"));
-//        elements.get(1).sendKeys("+78005553535");
-//        driver.findElement(By.className("checkbox__box")).click();
-//        driver.findElement(By.className("button")).click();
-//        String text = driver.findElement(By.className("order-success")).getText();
-//        assertEquals("Ваша заявка успешно отправлена!", text.trim());
-//    }
-
     @Test
     void shouldTestV1() throws InterruptedException {
         driver.get("http://localhost:9999");
