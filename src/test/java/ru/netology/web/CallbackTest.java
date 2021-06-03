@@ -36,26 +36,43 @@ class CallbackTest {
     }
 
     @Test
-    void shouldTestV1() throws InterruptedException {
+    void shouldSendForm() {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+78005553535");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
-        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.",text.trim());
-        Thread.sleep(5001);
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 
     @Test
-    void shouldTestV2() throws InterruptedException {
+    void shouldValidateName() {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivan Ivanov");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+78005553535");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button")).click();
         driver.findElement(By.className("input_invalid"));
-        Thread.sleep(5001);
+    }
+
+    @Test
+    void shouldValidateNumber() {
+        driver.get("http://localhost:9999");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("88005553535");
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        driver.findElement(By.className("input_invalid"));
+    }
+
+    @Test
+    void shouldValidateCheckbox() {
+        driver.get("http://localhost:9999");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+78005553535");
+        driver.findElement(By.cssSelector("button")).click();
+        driver.findElement(By.className("input_invalid"));
     }
 }
 
