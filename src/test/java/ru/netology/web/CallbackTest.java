@@ -53,8 +53,8 @@ class CallbackTest {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+78005553535");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button")).click();
-        driver.findElement(By.className("input_invalid"));
-        String text = driver.findElement(By.cssSelector("[data-test-id=name] [class=input__sub]")).getText();
+        //driver.findElement(By.className("input_invalid"));
+        String text = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
         assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
     }
 
@@ -65,8 +65,8 @@ class CallbackTest {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("88005553535");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button")).click();
-        driver.findElement(By.className("input_invalid"));
-        String text = driver.findElement(By.cssSelector("[data-test-id=phone] [class=input__sub]")).getText();
+       // driver.findElement(By.className("input_invalid"));
+        String text = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text.trim());
     }
 
@@ -76,8 +76,8 @@ class CallbackTest {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+78005553535");
         driver.findElement(By.cssSelector("button")).click();
-        driver.findElement(By.className("input_invalid"));
-        String text = driver.findElement(By.cssSelector("[class=checkbox__text]")).getText();
+        //driver.findElement(By.className("input_invalid"));
+        String text = driver.findElement(By.cssSelector(".input_invalid .checkbox__text")).getText();
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
     }
 }
